@@ -1,0 +1,45 @@
+{
+  "name": "beta.spacedatastandards.org",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.864.0",
+    "@aws-sdk/credential-providers": "^3.864.0",
+    "@headlessui/react": "^2.2.7",
+    "comlink": "^4.4.2",
+    "flatbuffers": "^25.2.10",
+    "flatc-wasm": "^25.2.10-1",
+    "idb-keyval": "^6.2.2",
+    "lucide-react": "^0.539.0",
+    "quicktype-core": "^23.2.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@tailwindcss/vite": "^4.1.11",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4.1.11",
+    "vite": "^7.1.2",
+    "vite-plugin-pwa": "^1.0.2",
+    "vitest": "^3.2.4"
+  }
+}
