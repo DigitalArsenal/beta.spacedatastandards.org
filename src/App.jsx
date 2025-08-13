@@ -83,99 +83,88 @@ export default function App() {
 
   return (
     <>
-      {/* Global style to hide scrollbars while preserving scroll (Turion-like clean surfaces) */}
-      <style>{`
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-          width: 0px;
-          height: 0px;
-          display: none;
-        }
-      `}</style>
-
-      <div className="flex h-screen overflow-hidden bg-[#0e0f12] text-slate-100">
-        {/* Mobile sidebar */}
-        <Transition.Root show={sidebarOpen} as={Fragment}>
-          <Dialog
-            as="div"
-            className="relative z-50 lg:hidden"
-            onClose={setSidebarOpen}
-          >
-            <Transition.Child
-              as={Fragment}
-              enter="transition-opacity ease-linear duration-150"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="transition-opacity ease-linear duration-150"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
+      <div className="w-screen bg-[#0e0f12] text-slate-100">
+        <div className="max-w-[1600px] mx-auto flex h-screen overflow-hidden">
+          {/* Mobile sidebar */}
+          <Transition.Root show={sidebarOpen} as={Fragment}>
+            <Dialog
+              as="div"
+              className="relative z-50 lg:hidden"
+              onClose={setSidebarOpen}
             >
-              <div className="fixed inset-0 bg-black/70" />
-            </Transition.Child>
-
-            <div className="fixed inset-0 flex">
               <Transition.Child
                 as={Fragment}
-                enter="transition ease-in-out duration-200 transform"
-                enterFrom="-translate-x-full"
-                enterTo="translate-x-0"
-                leave="transition ease-in-out duration-200 transform"
-                leaveFrom="translate-x-0"
-                leaveTo="-translate-x-full"
+                enter="transition-opacity ease-linear duration-150"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition-opacity ease-linear duration-150"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
               >
-                <Dialog.Panel className="relative mr-16 flex w-full max-w-xs flex-1">
-                  <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
-                    <button
-                      className="text-slate-300 hover:text-white focus:outline-none"
-                      onClick={() => setSidebarOpen(false)}
-                    >
-                      <X className="h-6 w-6" />
-                    </button>
-                  </div>
-                  <Sidebar
-                    query={query}
-                    setQuery={setQuery}
-                    activeTag={activeTag}
-                    setActiveTag={setActiveTag}
-                    onNavigate={() => setSidebarOpen(false)}
-                    mobile
-                  />
-                </Dialog.Panel>
+                <div className="fixed inset-0 bg-black/70" />
               </Transition.Child>
-            </div>
-          </Dialog>
-        </Transition.Root>
 
-        {/* Static sidebar (desktop) */}
-        <Sidebar
-          className="hidden lg:flex lg:w-72 lg:flex-col lg:shrink-0 lg:border-r lg:border-white/5"
-          query={query}
-          setQuery={setQuery}
-          activeTag={activeTag}
-          setActiveTag={setActiveTag}
-          onNavigate={() => {}}
-        />
+              <div className="fixed inset-0 flex">
+                <Transition.Child
+                  as={Fragment}
+                  enter="transition ease-in-out duration-200 transform"
+                  enterFrom="-translate-x-full"
+                  enterTo="translate-x-0"
+                  leave="transition ease-in-out duration-200 transform"
+                  leaveFrom="translate-x-0"
+                  leaveTo="-translate-x-full"
+                >
+                  <Dialog.Panel className="relative mr-16 flex w-full max-w-xs flex-1">
+                    <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
+                      <button
+                        className="text-slate-300 hover:text-white focus:outline-none"
+                        onClick={() => setSidebarOpen(false)}
+                      >
+                        <X className="h-6 w-6" />
+                      </button>
+                    </div>
+                    <Sidebar
+                      query={query}
+                      setQuery={setQuery}
+                      activeTag={activeTag}
+                      setActiveTag={setActiveTag}
+                      onNavigate={() => setSidebarOpen(false)}
+                      mobile
+                    />
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </Dialog>
+          </Transition.Root>
 
-        {/* Main column */}
-        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
-          <Topbar
-            onOpenSidebar={() => setSidebarOpen(true)}
-            dark={dark}
-            setDark={setDark}
+          {/* Static sidebar (desktop) */}
+          <Sidebar
+            className="hidden lg:flex lg:w-72 lg:flex-col lg:shrink-0 lg:border-r lg:border-white/5"
+            query={query}
+            setQuery={setQuery}
+            activeTag={activeTag}
+            setActiveTag={setActiveTag}
+            onNavigate={() => {}}
           />
 
-          {/* Content area: scrollable but hidden scrollbars */}
-          <main className="no-scrollbar flex-1 overflow-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="mx-auto max-w-7xl space-y-8">
-              <Hero />
-              <ContentGrid query={query} activeTag={activeTag} />
-            </div>
-          </main>
+          {/* Main column */}
+          <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+            <Topbar
+              onOpenSidebar={() => setSidebarOpen(true)}
+              dark={dark}
+              setDark={setDark}
+            />
 
-          <Footer />
+            {/* Content area: scrollable but hidden scrollbars */}
+            <main className="no-scrollbar flex-1 overflow-auto px-4 sm:px-6 lg:px-8 py-8">
+              <div className="mx-auto max-w-7xl space-y-8">
+                <Hero />
+                <ContentGrid query={query} activeTag={activeTag} />
+              </div>
+            </main>
+
+            <Footer />
+          </div>
         </div>
       </div>
     </>
