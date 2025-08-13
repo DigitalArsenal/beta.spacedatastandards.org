@@ -14,6 +14,7 @@
     "@aws-sdk/client-s3": "^3.864.0",
     "@aws-sdk/credential-providers": "^3.864.0",
     "@headlessui/react": "^2.2.7",
+    "@mlc-ai/web-llm": "^0.2.79",
     "comlink": "^4.4.2",
     "flatbuffers": "^25.2.10",
     "flatc-wasm": "^25.2.10-1",
